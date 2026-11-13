@@ -15,6 +15,9 @@ digest_threshold: 25
 sites:
   lloyds: true
   pickles: true
+  grays: true      # includes Slattery lots listed on Grays
+  carbids: true    # the car side of Allbids
+  # Manheim blocks automated browsers, so it can't be checked.
 
 # Search terms sent to each site. Results are filtered afterwards, so broad is fine.
 keywords:

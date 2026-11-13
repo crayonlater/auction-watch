@@ -18,7 +18,7 @@ import yaml
 from . import alerts, filters, state as state_mod
 from .models import Listing
 from .notify import Notifier
-from .sites import SITES, lloyds, pickles
+from .sites import SITES, carbids, grays, lloyds, pickles
 
 log = logging.getLogger("watcher")
 ROOT = Path(__file__).resolve().parent.parent
@@ -62,7 +62,40 @@ def scrape_lloyds(page, keyword: str, cfg: dict) -> list[Listing]:
     return out
 
 
-SCRAPERS = {"pickles": scrape_pickles, "lloyds": scrape_lloyds}
+def scrape_grays(page, keyword: str, cfg: dict) -> list[Listing]:
+    out, seen = [], set()
+    for n in range(1, grays.MAX_PAGES + 1):
+        page.goto(grays.search_url(keyword, n), wait_until="domcontentloaded", timeout=60_000)
+        try:
+            page.wait_for_selector(grays.WAIT_SELECTOR, timeout=20_000)
+        except Exception:
+            break  # no (more) results
+        page.wait_for_timeout(1500)
+        got = grays.parse_cards(page.evaluate(grays.EXTRACT_JS), datetime.now(timezone.utc))
+        fresh = [l for l in got if l.key not in seen]
+        if not fresh:
+            break  # page number past the end just repeats results
+        seen.update(l.key for l in fresh)
+        out += fresh
+        pause()
+    return out
+
+
+def scrape_carbids(page, keyword: str, cfg: dict) -> list[Listing]:
+    page.goto(carbids.BASE, wait_until="domcontentloaded", timeout=60_000)
+    box = page.locator(carbids.SEARCH_BOX).first
+    box.fill(keyword)
+    box.press("Enter")
+    try:
+        page.wait_for_selector(carbids.WAIT_SELECTOR, timeout=20_000)
+    except Exception:
+        return []  # no results
+    page.wait_for_timeout(2000)
+    return carbids.parse_cards(page.evaluate(carbids.EXTRACT_JS), datetime.now(timezone.utc))
+
+
+SCRAPERS = {"pickles": scrape_pickles, "lloyds": scrape_lloyds,
+            "grays": scrape_grays, "carbids": scrape_carbids}
 
 
 def check_drive_on_page(page, listing: Listing, cfg: dict) -> bool:
@@ -79,11 +112,14 @@ def check_drive_on_page(page, listing: Listing, cfg: dict) -> bool:
 
 
 def check_state_on_page(page, listing: Listing) -> Optional[str]:
-    """Lloyds fallback: read 'Location of item: ..., WA, Australia' from the lot page."""
+    """When the card has no state, read the address from the lot page (Lloyds, Slattery via Grays)."""
+    reader = getattr(SITES[listing.site], "state_from_lot_page", None)
+    if reader is None:
+        return None
     try:
         page.goto(listing.url, wait_until="domcontentloaded", timeout=60_000)
-        page.wait_for_timeout(2000)
-        state = lloyds.state_from_lot_page(page.inner_text("body"))
+        page.wait_for_timeout(3000)
+        state = reader(page.inner_text("body"))
     except Exception as e:
         log.warning("couldn't open %s: %s", listing.url, e)
         return None
@@ -100,7 +136,7 @@ def select(listings: list[Listing], cfg: dict, page, drive_cache: dict, state_ca
     for l in unique.values():
         if not filters.in_year_range(l.year, cfg["years"]):
             continue
-        if l.state is None and l.site == "lloyds":
+        if l.state is None:
             if not state_cache.get(l.key):
                 state_cache[l.key] = check_state_on_page(page, l)
             l.state = state_cache[l.key]

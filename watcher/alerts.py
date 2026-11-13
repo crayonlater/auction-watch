@@ -7,7 +7,7 @@ from typing import Optional
 from .models import Listing
 from .notify import Notifier, fmt_time
 
-SITE_NAMES = {"lloyds": "Lloyds", "pickles": "Pickles"}
+SITE_NAMES = {"lloyds": "Lloyds", "pickles": "Pickles", "grays": "Grays", "carbids": "Carbids"}
 PRUNE_AFTER = timedelta(days=14)
 
 
@@ -21,7 +21,7 @@ def _when(kind: Optional[str], at: Optional[datetime]) -> str:
 
 
 def _summary(l: Listing) -> str:
-    bits = [SITE_NAMES.get(l.site, l.site)]
+    bits = [l.extra.get("source") or SITE_NAMES.get(l.site, l.site)]
     if l.location:
         bits.append(l.location)
     if l.price:

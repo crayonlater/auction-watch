@@ -53,7 +53,7 @@ def test_live_auction_wording():
 
 def test_digest_when_many_new():
     state = {}
-    titles = run([lst(str(i), timedelta(days=5)) for i in range(8)], state, T0)
+    titles = run([lst(str(i), timedelta(days=5)) for i in range(8)], state, T0)  # threshold 5 in this test
     assert titles == ["8 new 4x4s at auction"]
 
 

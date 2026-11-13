@@ -1,6 +1,6 @@
 # Auction watch: 1980–1997 4x4s in NSW, VIC and QLD
 
-Checks **Pickles** and **Lloyds** every 30 minutes and sends push notifications to your phone:
+Checks **Pickles**, **Lloyds**, **Grays** (including Slattery lots shown on Grays) and **Carbids** (the car side of Allbids) every 30 minutes and sends push notifications to your phone:
 
 - **New listing:** a 4x4 from 1980–1997 in NSW, VIC or QLD. Includes location, current bid or buy price, and end time.
 - **24 hours left:** the auction ends (or a Pickles Live sale starts) in about a day.
@@ -55,5 +55,7 @@ python -m watcher.run --dry-run --only pickles --keywords landcruiser
 python -m pytest                                 # tests
 ```
 
-## Adding Manheim, Grays, etc.
+## Adding more sites
+Manheim blocks automated browsers, so it can't be included.
+
 Each site is one file in `watcher/sites/` providing `search_url()`, `EXTRACT_JS` (pulls the result cards off the page) and `parse_cards()`. Add a scrape function in `watcher/run.py` and a line under `sites:` in `config.yaml`.

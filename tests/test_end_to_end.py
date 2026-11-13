@@ -7,11 +7,14 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import pytest
 
 from watcher import run
-from watcher.sites import lloyds, pickles
-from tests.fixtures import LLOYDS_CARDS, PICKLES_CARDS, lloyds_page, pickles_page
+from watcher.sites import carbids, grays, lloyds, pickles
+from tests.fixtures import (CARBIDS_CARDS, GRAYS_CARDS, GRAYS_LOT_PAGES, LLOYDS_CARDS, PICKLES_CARDS,
+                            carbids_home, carbids_results, grays_page, lloyds_page, pickles_page)
 
 LOT_PAGES = {
     "6140002": "<html><body><h1>1994 Toyota Hilux Dual Cab</h1><p>Drive: Four wheel drive</p></body></html>",
+    "6140003": "<html><body><h1>1981 Nissan Patrol</h1><p><strong>Location of item:</strong> "
+               "1 Example Rd, Wetherill Park, NSW, Australia</p></body></html>",
 }
 
 
@@ -24,6 +27,13 @@ class Handler(BaseHTTPRequestHandler):
             body = pickles_page(PICKLES_CARDS) if "page=1" in self.path else "<html><body></body></html>"
         elif self.path.startswith("/AuctionLots.aspx"):
             body = lloyds_page(LLOYDS_CARDS)
+        elif self.path.startswith("/search?"):
+            body = grays_page(GRAYS_CARDS)  # every page number repeats page 1, like past-the-end pages
+        elif self.path.startswith("/lot/"):
+            lot = self.path.split("/")[2]
+            body = GRAYS_LOT_PAGES.get(lot, "<html><body>No drive info</body></html>")
+        elif self.path == "/":
+            body = carbids_home({"landcruiser": carbids_results(CARBIDS_CARDS)})
         elif self.path.startswith("/LotDetails.aspx"):
             lid = self.path.split("lid=")[-1]
             body = LOT_PAGES.get(lid, "<html><body>No drive info</body></html>")
@@ -44,6 +54,8 @@ def server(monkeypatch):
     base = f"http://127.0.0.1:{srv.server_port}"
     monkeypatch.setattr(lloyds, "BASE", base)
     monkeypatch.setattr(pickles, "BASE", base)
+    monkeypatch.setattr(grays, "BASE", base)
+    monkeypatch.setattr(carbids, "BASE", base)
     monkeypatch.setattr(run, "pause", lambda: None)
     yield base
     srv.shutdown()
@@ -57,16 +69,24 @@ def test_full_run(server, tmp_path, monkeypatch):
     n = run.main(args)
     titles = sorted(m["title"] for m in n.sent)
     # Pickles: 1991 HDJ80 QLD, 1997 FZJ80 VIC, 1989 Patrol NSW. Not: 1998 (year), SA, 4x2 Hilux.
-    # Lloyds: 1987 Patrol NSW, 1994 Hilux QLD (lot page says 4WD). Not: WA lot, 2012 lot.
+    # Lloyds: 1987 Patrol NSW, 1994 Hilux QLD (lot page says 4WD), 1981 Patrol (no flag;
+    # lot page says NSW). Not: WA lot, 2012 lot.
     assert titles == sorted([
         "New: 1991 Toyota Landcruiser HDJ80R GXL Wagon 8st 5dr Man 5sp 4x4 4.2DT",
         "New: 1997 Toyota Landcruiser FZJ80R RV Wagon 8st 5dr Man 5sp 4WD 4.5i",
         "New: 1989 Nissan Patrol GQ Wagon",
         "New: 1987 Nissan Patrol MQ Wagon - White...",
         "New: 1994 Toyota Hilux Dual Cab Ute...",
+        "New: 1981 Nissan Patrol Single Cab Utility - Yellow...",
+        # Grays: Patrol VIC; Hilux NSW (lot page says 4x4). Not: Rodeo 4x2, 2010 Slattery Prado.
+        "New: 1994 Nissan Patrol GQ ST Wagon Man 4WD Diesel",
+        "New: 1991 Toyota Hilux Single Cab Ute",
+        # Carbids: FJ62 NSW. Not: 2006 Prado (year), 1985 Patrol (ACT).
+        "New: 03/1989 Toyota Landcruiser GXL (4x4) FJ62RG 4d Wagon White 4.0L",
     ])
     saved = json.loads(state_file.read_text())
-    assert saved["drive_checks"] == {"lloyds:6140002": True}
+    assert saved["drive_checks"] == {"lloyds:6140002": True, "grays:0006-23502964": True}
+    assert saved["state_checks"] == {"lloyds:6140003": "NSW"}
 
     # Second run: nothing new. The Hilux ends in 45 min, so its 1h reminder was
     # already marked done when first seen (the "new" alert showed the time).

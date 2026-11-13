@@ -5,7 +5,9 @@ Runs on GitHub Actions every 30 min; `state.json` is committed back after each r
 
 ## Layout
 - `watcher/run.py` — entry point; Playwright browser (timezone Australia/Sydney), per-site scrape loops, filtering, health warnings
-- `watcher/sites/<site>.py` — `search_url()`, `EXTRACT_JS` (runs in page, returns plain dicts), `parse_cards()` (pure Python)
+- `watcher/sites/<site>.py` — `search_url()`, `EXTRACT_JS` (runs in page, returns plain dicts), `parse_cards()` (pure Python); optional `state_from_lot_page()` used when a card has no state
+- Sites: pickles, lloyds, grays (incl. Slattery lots via interimPage links), carbids (Allbids' cars; search is typed into the box). Manheim returns 403 to automated browsers — don't add it.
+- `watcher/sites/common.py` — shared helpers for grays/carbids (text-node lines, relative times, location lines)
 - `watcher/filters.py` — year / state / 4x4 logic (pure)
 - `watcher/alerts.py` — new-listing, 24h and 1h reminder logic against stored state
 - `watcher/notify.py` — ntfy sender; dry-run when `NTFY_TOPIC` unset or `--dry-run`
