@@ -9,43 +9,43 @@
  "listings": {
   "lloyds:6140507": {
    "first_seen": "2026-11-13T07:12:56.523183+00:00",
-   "last_seen": "2026-11-13T07:12:56.523183+00:00",
+   "last_seen": "2026-11-13T13:30:55.433098+00:00",
    "location": "VIC",
-   "price": "$1,150",
+   "price": "$1,350",
    "reminded": [],
    "site": "lloyds",
-   "time_at": "2026-11-16T10:13:27.040210+00:00",
+   "time_at": "2026-11-16T10:13:24.614947+00:00",
    "time_kind": "ends",
    "title": "1984 Mitsubishi Pajero L042GV - White -...",
    "url": "https://www.lloydsonline.com.au/LotDetails.aspx?lid=6140507"
   },
   "lloyds:6141267": {
    "first_seen": "2026-11-13T07:12:56.523183+00:00",
-   "last_seen": "2026-11-13T07:12:56.523183+00:00",
+   "last_seen": "2026-11-13T13:30:55.433098+00:00",
    "location": "NSW",
-   "price": "$10",
+   "price": "$12",
    "reminded": [],
    "site": "lloyds",
-   "time_at": "2026-11-28T02:33:19.024865+00:00",
+   "time_at": "2026-11-28T02:32:50.812157+00:00",
    "time_kind": "ends",
    "title": "1996 Mitsubishi Triton MJ Single Cab Utility -...",
    "url": "https://www.lloydsonline.com.au/LotDetails.aspx?lid=6141267"
   },
   "lloyds:6141270": {
    "first_seen": "2026-11-13T07:12:56.523183+00:00",
-   "last_seen": "2026-11-13T07:12:56.523183+00:00",
+   "last_seen": "2026-11-13T13:30:55.433098+00:00",
    "location": "VIC",
    "price": "$8,310",
    "reminded": [],
    "site": "lloyds",
-   "time_at": "2026-11-28T02:34:21.787744+00:00",
+   "time_at": "2026-11-28T02:34:19.695694+00:00",
    "time_kind": "ends",
    "title": "1981 Nissan Patrol Single Cab Utility - Yellow...",
    "url": "https://www.lloydsonline.com.au/LotDetails.aspx?lid=6141270"
   },
   "pickles:62435957": {
    "first_seen": "2026-11-13T05:54:59.762889+00:00",
-   "last_seen": "2026-11-13T07:12:56.523183+00:00",
+   "last_seen": "2026-11-13T13:30:55.433098+00:00",
    "location": "Tullamarine, VIC",
    "price": null,
    "reminded": [],
@@ -57,7 +57,7 @@
   },
   "pickles:62437794": {
    "first_seen": "2026-11-13T05:54:59.762889+00:00",
-   "last_seen": "2026-11-13T07:12:56.523183+00:00",
+   "last_seen": "2026-11-13T13:30:55.433098+00:00",
    "location": "Lavington, NSW",
    "price": null,
    "reminded": [],
@@ -69,7 +69,7 @@
   },
   "pickles:62437897": {
    "first_seen": "2026-11-13T05:54:59.762889+00:00",
-   "last_seen": "2026-11-13T07:12:56.523183+00:00",
+   "last_seen": "2026-11-13T13:30:55.433098+00:00",
    "location": "Lavington, NSW",
    "price": null,
    "reminded": [],
@@ -81,7 +81,7 @@
   },
   "pickles:62437906": {
    "first_seen": "2026-11-13T05:54:59.762889+00:00",
-   "last_seen": "2026-11-13T07:12:56.523183+00:00",
+   "last_seen": "2026-11-13T13:30:55.433098+00:00",
    "location": "Lavington, NSW",
    "price": null,
    "reminded": [],
@@ -93,7 +93,7 @@
   },
   "pickles:62437962": {
    "first_seen": "2026-11-13T05:54:59.762889+00:00",
-   "last_seen": "2026-11-13T07:12:56.523183+00:00",
+   "last_seen": "2026-11-13T13:30:55.433098+00:00",
    "location": "Lavington, NSW",
    "price": null,
    "reminded": [],
@@ -105,7 +105,7 @@
   },
   "pickles:62437978": {
    "first_seen": "2026-11-13T05:54:59.762889+00:00",
-   "last_seen": "2026-11-13T07:12:56.523183+00:00",
+   "last_seen": "2026-11-13T13:30:55.433098+00:00",
    "location": "Lavington, NSW",
    "price": null,
    "reminded": [],
@@ -117,7 +117,7 @@
   },
   "pickles:62438004": {
    "first_seen": "2026-11-13T05:54:59.762889+00:00",
-   "last_seen": "2026-11-13T07:12:56.523183+00:00",
+   "last_seen": "2026-11-13T13:30:55.433098+00:00",
    "location": "Lavington, NSW",
    "price": null,
    "reminded": [],
@@ -129,7 +129,7 @@
   },
   "pickles:62438015": {
    "first_seen": "2026-11-13T05:54:59.762889+00:00",
-   "last_seen": "2026-11-13T07:12:56.523183+00:00",
+   "last_seen": "2026-11-13T13:30:55.433098+00:00",
    "location": "Lavington, NSW",
    "price": null,
    "reminded": [],
@@ -141,7 +141,7 @@
   },
   "pickles:62438028": {
    "first_seen": "2026-11-13T05:54:59.762889+00:00",
-   "last_seen": "2026-11-13T07:12:56.523183+00:00",
+   "last_seen": "2026-11-13T13:30:55.433098+00:00",
    "location": "Lavington, NSW",
    "price": null,
    "reminded": [],
@@ -153,7 +153,7 @@
   },
   "pickles:62438371": {
    "first_seen": "2026-11-13T05:54:59.762889+00:00",
-   "last_seen": "2026-11-13T07:12:56.523183+00:00",
+   "last_seen": "2026-11-13T13:30:55.433098+00:00",
    "location": "Acacia Ridge, QLD",
    "price": null,
    "reminded": [],
@@ -165,7 +165,7 @@
   },
   "pickles:62470384": {
    "first_seen": "2026-11-13T05:54:59.762889+00:00",
-   "last_seen": "2026-11-13T07:12:56.523183+00:00",
+   "last_seen": "2026-11-13T13:30:55.433098+00:00",
    "location": "Belmore, NSW",
    "price": null,
    "reminded": [],
@@ -177,7 +177,7 @@
   },
   "pickles:62470669": {
    "first_seen": "2026-11-13T05:54:59.762889+00:00",
-   "last_seen": "2026-11-13T07:12:56.523183+00:00",
+   "last_seen": "2026-11-13T13:30:55.433098+00:00",
    "location": "Warwick, QLD",
    "price": null,
    "reminded": [],
