@@ -11,6 +11,7 @@ import random
 import time
 from datetime import datetime, timezone
 from pathlib import Path
+from typing import Optional
 
 import yaml
 
@@ -77,7 +78,20 @@ def check_drive_on_page(page, listing: Listing, cfg: dict) -> bool:
     return True if status is None else status
 
 
-def select(listings: list[Listing], cfg: dict, page, drive_cache: dict) -> list[Listing]:
+def check_state_on_page(page, listing: Listing) -> Optional[str]:
+    """Lloyds fallback: read 'Location of item: ..., WA, Australia' from the lot page."""
+    try:
+        page.goto(listing.url, wait_until="domcontentloaded", timeout=60_000)
+        page.wait_for_timeout(2000)
+        state = lloyds.state_from_lot_page(page.inner_text("body"))
+    except Exception as e:
+        log.warning("couldn't open %s: %s", listing.url, e)
+        return None
+    pause()
+    return state
+
+
+def select(listings: list[Listing], cfg: dict, page, drive_cache: dict, state_cache: dict) -> list[Listing]:
     """Dedupe, then keep NSW/VIC/QLD 4x4s in the year range."""
     unique = {l.key: l for l in listings}
     keep = []
@@ -86,8 +100,14 @@ def select(listings: list[Listing], cfg: dict, page, drive_cache: dict) -> list[
     for l in unique.values():
         if not filters.in_year_range(l.year, cfg["years"]):
             continue
+        if l.state is None and l.site == "lloyds":
+            if not state_cache.get(l.key):
+                state_cache[l.key] = check_state_on_page(page, l)
+            l.state = state_cache[l.key]
+        l.location = l.location or l.state
         if l.state not in cfg["states"]:
-            log.info("  skip (state %s): %s", l.state or "unknown", l.title)
+            log.info("  skip (state %s): %s %s", l.state or "unknown", l.title,
+                     l.extra.get("hints", "") if l.state is None else "")
             continue
         status = filters.four_wd_status(l.text, cfg["always_4wd_models"])
         if status is None:
@@ -129,6 +149,7 @@ def main(argv=None) -> Notifier:
     state_path = Path(args.state)
     state = state_mod.load(state_path)
     drive_cache = state.setdefault("drive_checks", {})
+    state_cache = state.setdefault("state_checks", {})
     notifier = Notifier(dry_run=args.dry_run)
     now = datetime.now(timezone.utc)
 
@@ -151,7 +172,7 @@ def main(argv=None) -> Notifier:
                     errors.append(f"{kw}: {e}")
                     log.warning("%s '%s' failed: %s", site, kw, e)
                 pause()
-            picked = select(found, cfg, page, drive_cache)
+            picked = select(found, cfg, page, drive_cache, state_cache)
             log.info("%s: %d cards, %d matches, %d errors", site, len(found), len(picked), len(errors))
             for l in picked:
                 log.info("  match: %s | %s | %s | %s", l.title, l.location, l.time_kind, l.time_at)

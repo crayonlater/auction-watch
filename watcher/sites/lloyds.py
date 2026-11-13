@@ -1,7 +1,8 @@
 """Lloyds Auctions (lloydsonline.com.au). ASP.NET site; keyword search is a plain GET URL.
 
 Each result card links to LotDetails.aspx?...&lid=<id> and shows the title,
-current bid, a countdown like "3d 6h 58m", and a state flag image (alt="Victoria").
+current bid, a countdown like "3d 6h 58m", and a state flag image (shown as "Victoria").
+Lot pages say "Location of item: <address>, WA, Australia", used when the flag can't be read.
 Lot pages include "Drive: Four wheel drive" in the description for vehicles.
 """
 from __future__ import annotations
@@ -11,7 +12,7 @@ from datetime import datetime, timedelta
 from typing import Optional
 from urllib.parse import quote_plus
 
-from ..filters import normalise_state, parse_year
+from ..filters import parse_year
 from ..models import Listing
 
 NAME = "lloyds"
@@ -31,8 +32,6 @@ WAIT_SELECTOR = 'a[href*="LotDetails.aspx"], .no-results, body'
 
 EXTRACT_JS = r"""
 () => {
-  const STATES = ['New South Wales','Victoria','Queensland','South Australia',
-                  'Western Australia','Tasmania','Northern Territory','Australian Capital Territory'];
   const out = [], seen = new Set();
   for (const a of document.querySelectorAll('a[href*="LotDetails.aspx"]')) {
     const h = a.querySelector('h1,h2,h3');
@@ -40,17 +39,27 @@ EXTRACT_JS = r"""
     const m = a.href.match(/[?&]lid=(\d+)/);
     if (!m || seen.has(m[1])) continue;
     seen.add(m[1]);
-    let el = a, state = null;
-    for (let i = 0; i < 4 && el && !state; i++) {
+    // The state flag sits beside the link. Collect alt/title/src of nearby images
+    // and let Python work out the state (the flag may be named in any of them).
+    let el = a, hints = [];
+    for (let i = 0; i < 3 && el; i++) {
       el = el.parentElement;
       if (!el) break;
-      const img = [...el.querySelectorAll('img[alt]')].find(i => STATES.includes(i.alt));
-      if (img) state = img.alt;
+      const imgs = [...el.querySelectorAll('img,[role="img"],[title],[aria-label]')]
+        .filter(im => !a.contains(im));
+      if (imgs.length) {
+        hints = imgs.flatMap(im => [im.getAttribute('alt'), im.getAttribute('title'),
+            im.getAttribute('aria-label'), im.getAttribute('src'),
+            typeof im.className === 'string' ? im.className : '',
+            getComputedStyle(im).backgroundImage])
+          .filter(h => h && h !== 'none');
+        break;
+      }
     }
     // One line per leaf element, so adjacent spans like "$3,200" and "1d 2h" don't run together
     const lines = [...a.querySelectorAll('*')].filter(e => !e.children.length)
       .map(e => e.textContent.trim()).filter(Boolean);
-    out.push({ id: m[1], href: a.href, title: h.innerText.trim(), text: lines.join('\n'), state });
+    out.push({ id: m[1], href: a.href, title: h.innerText.trim(), text: lines.join('\n'), hints });
   }
   const pager = (document.body.innerText.match(/(\d+)\s+of\s+(\d+)/) || []);
   return { cards: out, page: pager[1] ? +pager[1] : 1, pages: pager[2] ? +pager[2] : 1 };
@@ -89,6 +98,47 @@ def parse_price(text: str) -> Optional[str]:
     return None
 
 
+_FULL_STATES = {
+    "new south wales": "NSW", "victoria": "VIC", "queensland": "QLD", "south australia": "SA",
+    "western australia": "WA", "tasmania": "TAS", "northern territory": "NT",
+    "australian capital territory": "ACT",
+}
+_ABBREV = re.compile(r"(?<![a-z])(nsw|vic|qld|sa|wa|tas|nt|act)(?![a-z])", re.I)
+
+
+def state_from_hints(hints: list[str]) -> Optional[str]:
+    """Card flag image -> state, from its alt/title text or failing that its file name."""
+    hints = [h for h in hints or [] if h and "lloyds" not in h.lower()]
+    for h in hints:
+        low = h.lower()
+        for name, code in _FULL_STATES.items():
+            if name in low:
+                return code
+    for h in hints:
+        name = h.rsplit("/", 1)[-1].rsplit(".", 1)[0]  # file name without folders/extension
+        m = _ABBREV.search(name)
+        if m:
+            return m.group(1).upper()
+    return None
+
+
+_LOCATION = re.compile(r"Location of item:\s*([^\n]+)", re.I)
+_LOC_ABBREV = re.compile(r"(?:,|\s)\s*(NSW|VIC|QLD|SA|WA|TAS|NT|ACT)\b")
+
+
+def state_from_lot_page(text: str) -> Optional[str]:
+    """'Location of item: 90-94 Bannister Road, Canning Vale, WA, Australia' -> 'WA'"""
+    m = _LOCATION.search(text or "")
+    if not m:
+        return None
+    loc = m.group(1)
+    a = _LOC_ABBREV.search(loc)
+    if a:
+        return a.group(1)
+    low = loc.lower()
+    return next((code for name, code in _FULL_STATES.items() if name in low), None)
+
+
 def parse_cards(raw: list[dict], now: datetime) -> list[Listing]:
     listings = []
     for card in raw:
@@ -105,11 +155,11 @@ def parse_cards(raw: list[dict], now: datetime) -> list[Listing]:
             title=title,
             url=f"{BASE}/LotDetails.aspx?lid={lid}",
             year=parse_year(title),
-            state=normalise_state(card.get("state")),
-            location=card.get("state"),
+            state=state_from_hints(card.get("hints") or []),
             price=price,
             time_at=(now + delta) if delta else None,
             time_kind="ends" if delta else None,
             text=f"{title}\n{text}",
+            extra={"hints": (card.get("hints") or [])[:6]},
         ))
     return listings
