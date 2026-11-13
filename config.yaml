@@ -1,0 +1,85 @@
+# What to look for
+years: [1980, 1997]          # inclusive
+states: [NSW, VIC, QLD]
+
+# Reminders before an auction ends (or a live auction starts), in hours
+reminder_hours: [24, 1]
+
+# How often the workflow runs, in minutes. Reminders fire up to this much
+# early so a delayed run never misses one.
+run_interval_minutes: 30
+
+# More than this many new matches in one run are sent as a single digest
+digest_threshold: 5
+
+sites:
+  lloyds: true
+  pickles: true
+
+# Search terms sent to each site. Results are filtered afterwards, so broad is fine.
+keywords:
+  - 4x4
+  - 4wd
+  - landcruiser
+  - land cruiser
+  - troop carrier
+  - patrol
+  - pajero
+  - hilux
+  - surf
+  - 4runner
+  - prado
+  - range rover
+  - land rover
+  - defender
+  - discovery
+  - jackaroo
+  - maverick
+  - rodeo
+  - jeep
+  - suzuki sierra
+  - vitara
+  - rocky
+  - feroza
+  - bighorn
+  - courier
+  - triton
+  - navara
+
+# Models that are always 4x4 in Australia for 1980-1997.
+# A listing with one of these in the title counts as a 4x4 unless it says 2WD/4x2.
+always_4wd_models:
+  - landcruiser
+  - land cruiser
+  - troop carrier
+  - troopcarrier
+  - troopy
+  - patrol
+  - pajero
+  - hilux surf
+  - 4runner
+  - prado
+  - range rover
+  - land rover
+  - defender
+  - discovery
+  - jackaroo
+  - maverick
+  - suzuki sierra
+  - sj410
+  - sj413
+  - vitara
+  - rocky
+  - feroza
+  - bighorn
+  - shogun
+  - wrangler
+  - cherokee
+  - niva
+  - g-wagen
+  - gelandewagen
+  - safari
+
+# Anything else (Hilux, Courier, Rodeo, Triton...) only counts if the listing
+# says 4x4/4WD. If the search card doesn't say either way, the lot page is
+# opened once to check, and the answer is remembered.
