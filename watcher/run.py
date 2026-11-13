@@ -81,8 +81,13 @@ def select(listings: list[Listing], cfg: dict, page, drive_cache: dict) -> list[
     """Dedupe, then keep NSW/VIC/QLD 4x4s in the year range."""
     unique = {l.key: l for l in listings}
     keep = []
+    no_year = sum(1 for l in unique.values() if l.year is None)
+    log.info("  %d unique lots, %d with no year in the title", len(unique), no_year)
     for l in unique.values():
-        if not filters.in_year_range(l.year, cfg["years"]) or l.state not in cfg["states"]:
+        if not filters.in_year_range(l.year, cfg["years"]):
+            continue
+        if l.state not in cfg["states"]:
+            log.info("  skip (state %s): %s", l.state or "unknown", l.title)
             continue
         status = filters.four_wd_status(l.text, cfg["always_4wd_models"])
         if status is None:
@@ -92,6 +97,8 @@ def select(listings: list[Listing], cfg: dict, page, drive_cache: dict) -> list[
         l.four_wd = status
         if status:
             keep.append(l)
+        else:
+            log.info("  skip (not 4x4): %s", l.title)
     return keep
 
 

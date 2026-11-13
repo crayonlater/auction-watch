@@ -9,8 +9,8 @@ reminder_hours: [24, 1]
 # early so a delayed run never misses one.
 run_interval_minutes: 30
 
-# More than this many new matches in one run are sent as a single digest
-digest_threshold: 5
+# More than this many new matches in one run are sent as one summary instead of separate alerts
+digest_threshold: 25
 
 sites:
   lloyds: true

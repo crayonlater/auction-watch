@@ -54,7 +54,8 @@ def process(matches: list[Listing], state: dict, notifier: Notifier, now: dateti
 
     # New-listing alerts
     if len(new) > digest_threshold:
-        lines = [f"• {l.title} — {_summary(l)} — {_when(l.time_kind, l.time_at)}\n  {l.url}" for l in new]
+        # Compact: phones cut long notifications short. Full links are in the run log.
+        lines = [f"• {l.title[:45]} · {l.location or '?'} · {fmt_time(l.time_at)}" for l in new]
         notifier.send(f"{len(new)} new 4x4s at auction", "\n".join(lines), priority="high")
     else:
         for l in new:
