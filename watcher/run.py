@@ -25,7 +25,7 @@ ROOT = Path(__file__).resolve().parent.parent
 
 
 def pause() -> None:
-    time.sleep(random.uniform(1.5, 3.5))  # be gentle with the sites
+    time.sleep(random.uniform(1.0, 2.0))  # be gentle with the sites
 
 
 def scrape_pickles(page, keyword: str, cfg: dict) -> list[Listing]:
@@ -158,6 +158,14 @@ def select(listings: list[Listing], cfg: dict, page, drive_cache: dict, state_ca
     return keep
 
 
+def plan_keywords(cfg: dict, site: str, override: list[str] | None, state: dict) -> tuple[list[str], int]:
+    """This site's search words, rotated so a run that runs out of time
+    starts the next run where it stopped. Returns (ordered words, offset used)."""
+    words = override or cfg.get("site_keywords", {}).get(site) or cfg["keywords"]
+    offset = state.setdefault("keyword_offset", {}).get(site, 0) % len(words)
+    return words[offset:] + words[:offset], offset
+
+
 def health(state: dict, notifier: Notifier, site: str, ok: bool, detail: str, now: datetime) -> None:
     """Warn (at most once a day) if a site errors or returns nothing — usually a layout change."""
     h = state.setdefault("health", {}).setdefault(site, {})
@@ -181,7 +189,7 @@ def main(argv=None) -> Notifier:
 
     logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
     cfg = yaml.safe_load(Path(args.config).read_text())
-    keywords = args.keywords.split(",") if args.keywords else cfg["keywords"]
+    keywords = args.keywords.split(",") if args.keywords else None
     state_path = Path(args.state)
     state = state_mod.load(state_path)
     drive_cache = state.setdefault("drive_checks", {})
@@ -200,19 +208,33 @@ def main(argv=None) -> Notifier:
         for site, enabled in cfg["sites"].items():
             if not enabled or (args.only and site != args.only):
                 continue
-            found, errors = [], []
-            for kw in keywords:
-                try:
-                    found += SCRAPERS[site](page, kw, cfg)
-                except Exception as e:
-                    errors.append(f"{kw}: {e}")
-                    log.warning("%s '%s' failed: %s", site, kw, e)
-                pause()
-            picked = select(found, cfg, page, drive_cache, state_cache)
-            log.info("%s: %d cards, %d matches, %d errors", site, len(found), len(picked), len(errors))
+            words, offset = plan_keywords(cfg, site, keywords, state)
+            budget = cfg.get("time_budget_minutes", {}).get(site, 6) * 60
+            started = time.monotonic()
+            found, errors, done = [], [], 0
+            try:
+                for kw in words:
+                    if done and time.monotonic() - started > budget:  # always do at least one
+                        log.warning("%s: out of time after %d of %d searches; the rest go first next run",
+                                    site, done, len(words))
+                        break
+                    try:
+                        found += SCRAPERS[site](page, kw, cfg)
+                    except Exception as e:
+                        errors.append(f"{kw}: {e}")
+                        log.warning("%s '%s' failed: %s", site, kw, e)
+                    done += 1
+                    pause()
+                state["keyword_offset"][site] = (offset + done) % len(words) if done < len(words) else 0
+                picked = select(found, cfg, page, drive_cache, state_cache)
+            except Exception as e:  # never let one site stop the alerts for the others
+                log.error("%s failed: %s", site, e)
+                picked = []
+            log.info("%s: %d cards, %d matches, %d errors, %.1f min", site, len(found), len(picked),
+                     len(errors), (time.monotonic() - started) / 60)
             for l in picked:
                 log.info("  match: %s | %s | %s | %s", l.title, l.location, l.time_kind, l.time_at)
-            ok = bool(found) and len(errors) < len(keywords)
+            ok = bool(found) and len(errors) < max(done, 1)
             health(state, notifier, site, ok,
                    f"{len(found)} results, {len(errors)} failed searches. "
                    f"{errors[0] if errors else 'No results at all - the site layout may have changed.'}",

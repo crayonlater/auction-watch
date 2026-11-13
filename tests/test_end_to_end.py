@@ -92,3 +92,33 @@ def test_full_run(server, tmp_path, monkeypatch):
     # already marked done when first seen (the "new" alert showed the time).
     n2 = run.main(args)
     assert [m["title"] for m in n2.sent] == []
+
+
+def test_keyword_rotation():
+    cfg = {"keywords": ["a", "b", "c", "d"], "site_keywords": {"grays": ["x", "y"]}}
+    state = {"keyword_offset": {"pickles": 3}}
+    assert run.plan_keywords(cfg, "pickles", None, state) == (["d", "a", "b", "c"], 3)
+    assert run.plan_keywords(cfg, "grays", None, state) == (["x", "y"], 0)
+    assert run.plan_keywords(cfg, "lloyds", ["only"], state) == (["only"], 0)
+
+
+def test_time_budget_stops_early_and_resumes(server, tmp_path, monkeypatch):
+    """With no time left, each site does one search, saves where it stopped, and alerts still go out."""
+    import yaml
+    from pathlib import Path
+    cfg = yaml.safe_load((Path(run.ROOT) / "config.yaml").read_text())
+    cfg["time_budget_minutes"] = {s: 0 for s in cfg["sites"]}
+    cfg["site_keywords"] = {s: ["landcruiser", "nothing1", "nothing2"] for s in cfg["sites"]}
+    cfg_file = tmp_path / "config.yaml"
+    cfg_file.write_text(yaml.safe_dump(cfg))
+    monkeypatch.delenv("NTFY_TOPIC", raising=False)
+    state_file = tmp_path / "state.json"
+
+    n = run.main(["--config", str(cfg_file), "--state", str(state_file)])
+    saved = json.loads(state_file.read_text())
+    assert saved["keyword_offset"] == {"lloyds": 1, "pickles": 1, "grays": 1, "carbids": 1}
+    assert any("Patrol" in m["title"] for m in n.sent)  # first search still produced alerts
+
+    run.main(["--config", str(cfg_file), "--state", str(state_file)])
+    saved = json.loads(state_file.read_text())
+    assert saved["keyword_offset"] == {"lloyds": 2, "pickles": 2, "grays": 2, "carbids": 2}

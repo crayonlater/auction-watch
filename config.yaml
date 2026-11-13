@@ -19,7 +19,21 @@ sites:
   carbids: true    # the car side of Allbids
   # Manheim blocks automated browsers, so it can't be checked.
 
-# Search terms sent to each site. Results are filtered afterwards, so broad is fine.
+# Most minutes each site may take per run (GitHub stops a run at 25). If a site runs
+# out of time, the searches it didn't get to go first next run.
+time_budget_minutes:
+  lloyds: 3
+  pickles: 5
+  grays: 5
+  carbids: 4
+
+# Grays and Carbids search slowly, so they get a shorter list (titles there almost
+# always say 4x4/4WD or the model).
+site_keywords:
+  grays: [4x4, 4wd, landcruiser, patrol, pajero, hilux, range rover, land rover, jeep, suzuki, rodeo, courier, triton, troop carrier]
+  carbids: [4x4, 4wd, landcruiser, patrol, pajero, hilux, range rover, land rover, jeep, suzuki, rodeo, courier, triton]
+
+# Search terms sent to each site (Lloyds and Pickles use this full list). Results are filtered afterwards, so broad is fine.
 keywords:
   - 4x4
   - 4wd
