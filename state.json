@@ -3,49 +3,105 @@
   "lloyds:6141267": true
  },
  "health": {
+  "carbids": {},
+  "grays": {},
   "lloyds": {},
   "pickles": {}
  },
+ "keyword_offset": {
+  "carbids": 0,
+  "grays": 11,
+  "lloyds": 0,
+  "pickles": 0
+ },
  "listings": {
+  "grays:0001-23502933": {
+   "first_seen": "2026-11-13T22:33:27.728329+00:00",
+   "last_seen": "2026-11-13T22:33:27.728329+00:00",
+   "location": "Dandenong South, VIC",
+   "price": "$3,609",
+   "reminded": [],
+   "site": "grays",
+   "time_at": "2026-11-17T09:59:46.613153+00:00",
+   "time_kind": "ends",
+   "title": "1993 Suzuki Maruti 4x4 Wide Track LWB Petrol",
+   "url": "https://www.grays.com/lot/0001-23502933/classic-cars/1993-suzuki-maruti-4x4-wide-track-lwb-petrol"
+  },
+  "grays:0006-23502933": {
+   "first_seen": "2026-11-13T22:33:27.728329+00:00",
+   "last_seen": "2026-11-13T22:33:27.728329+00:00",
+   "location": "Dandenong South, VIC",
+   "price": "$1,409",
+   "reminded": [],
+   "site": "grays",
+   "time_at": "2026-11-17T09:59:53.453414+00:00",
+   "time_kind": "ends",
+   "title": "1980 Land Rover Range Rover 2 door (EV Conversion) Manual Wagon Electric",
+   "url": "https://www.grays.com/lot/0006-23502933/classic-cars/1980-land-rover-range-rover-2-door-ev-conversion-manual-wagon-electric"
+  },
+  "grays:0014-23502938": {
+   "first_seen": "2026-11-13T22:33:27.728329+00:00",
+   "last_seen": "2026-11-13T22:33:27.728329+00:00",
+   "location": "Pinkenba, QLD",
+   "price": "$557",
+   "reminded": [],
+   "site": "grays",
+   "time_at": "2026-11-17T09:59:40.602996+00:00",
+   "time_kind": "ends",
+   "title": "Overdue Storage: 1992 Toyota Landcruiser FJ80R Diesel SUV",
+   "url": "https://www.grays.com/lot/0014-23502938/motor-vehicles-motor-cycles/overdue-storage-1992-toyota-landcruiser-fj80r-diesel-suv"
+  },
+  "grays:0022-23502935": {
+   "first_seen": "2026-11-13T22:33:27.728329+00:00",
+   "last_seen": "2026-11-13T22:33:27.728329+00:00",
+   "location": "QLD",
+   "price": "$309",
+   "reminded": [],
+   "site": "grays",
+   "time_at": "2026-11-17T07:59:14.110492+00:00",
+   "time_kind": "ends",
+   "title": "1993 Isuzu FTS 700 4x4 Fire Truck",
+   "url": "https://www.grays.com/lot/0022-23502935/transport-trucks-and-trailers/1993-isuzu-fts-700-4x4-fire-truck"
+  },
   "lloyds:6140507": {
    "first_seen": "2026-11-13T07:12:56.523183+00:00",
-   "last_seen": "2026-11-13T20:41:27.023678+00:00",
+   "last_seen": "2026-11-13T22:33:27.728329+00:00",
    "location": "VIC",
    "price": "$1,350",
    "reminded": [],
    "site": "lloyds",
-   "time_at": "2026-11-16T10:13:57.763163+00:00",
+   "time_at": "2026-11-16T10:13:52.058065+00:00",
    "time_kind": "ends",
    "title": "1984 Mitsubishi Pajero L042GV - White -...",
    "url": "https://www.lloydsonline.com.au/LotDetails.aspx?lid=6140507"
   },
   "lloyds:6141267": {
    "first_seen": "2026-11-13T07:12:56.523183+00:00",
-   "last_seen": "2026-11-13T20:41:27.023678+00:00",
+   "last_seen": "2026-11-13T22:33:27.728329+00:00",
    "location": "NSW",
    "price": "$12",
    "reminded": [],
    "site": "lloyds",
-   "time_at": "2026-11-28T02:33:26.514833+00:00",
+   "time_at": "2026-11-28T02:33:01.449309+00:00",
    "time_kind": "ends",
    "title": "1996 Mitsubishi Triton MJ Single Cab Utility -...",
    "url": "https://www.lloydsonline.com.au/LotDetails.aspx?lid=6141267"
   },
   "lloyds:6141270": {
    "first_seen": "2026-11-13T07:12:56.523183+00:00",
-   "last_seen": "2026-11-13T20:41:27.023678+00:00",
+   "last_seen": "2026-11-13T22:33:27.728329+00:00",
    "location": "VIC",
    "price": "$8,310",
    "reminded": [],
    "site": "lloyds",
-   "time_at": "2026-11-28T02:34:52.968337+00:00",
+   "time_at": "2026-11-28T02:34:48.538343+00:00",
    "time_kind": "ends",
    "title": "1981 Nissan Patrol Single Cab Utility - Yellow...",
    "url": "https://www.lloydsonline.com.au/LotDetails.aspx?lid=6141270"
   },
   "pickles:62435957": {
    "first_seen": "2026-11-13T05:54:59.762889+00:00",
-   "last_seen": "2026-11-13T20:41:27.023678+00:00",
+   "last_seen": "2026-11-13T22:33:27.728329+00:00",
    "location": "Tullamarine, VIC",
    "price": null,
    "reminded": [],
@@ -57,7 +113,7 @@
   },
   "pickles:62437794": {
    "first_seen": "2026-11-13T05:54:59.762889+00:00",
-   "last_seen": "2026-11-13T20:41:27.023678+00:00",
+   "last_seen": "2026-11-13T22:33:27.728329+00:00",
    "location": "Lavington, NSW",
    "price": null,
    "reminded": [],
@@ -69,7 +125,7 @@
   },
   "pickles:62437897": {
    "first_seen": "2026-11-13T05:54:59.762889+00:00",
-   "last_seen": "2026-11-13T20:41:27.023678+00:00",
+   "last_seen": "2026-11-13T22:33:27.728329+00:00",
    "location": "Lavington, NSW",
    "price": null,
    "reminded": [],
@@ -81,7 +137,7 @@
   },
   "pickles:62437906": {
    "first_seen": "2026-11-13T05:54:59.762889+00:00",
-   "last_seen": "2026-11-13T20:41:27.023678+00:00",
+   "last_seen": "2026-11-13T22:33:27.728329+00:00",
    "location": "Lavington, NSW",
    "price": null,
    "reminded": [],
@@ -93,7 +149,7 @@
   },
   "pickles:62437962": {
    "first_seen": "2026-11-13T05:54:59.762889+00:00",
-   "last_seen": "2026-11-13T20:41:27.023678+00:00",
+   "last_seen": "2026-11-13T22:33:27.728329+00:00",
    "location": "Lavington, NSW",
    "price": null,
    "reminded": [],
@@ -105,7 +161,7 @@
   },
   "pickles:62437978": {
    "first_seen": "2026-11-13T05:54:59.762889+00:00",
-   "last_seen": "2026-11-13T20:41:27.023678+00:00",
+   "last_seen": "2026-11-13T22:33:27.728329+00:00",
    "location": "Lavington, NSW",
    "price": null,
    "reminded": [],
@@ -117,7 +173,7 @@
   },
   "pickles:62438004": {
    "first_seen": "2026-11-13T05:54:59.762889+00:00",
-   "last_seen": "2026-11-13T20:41:27.023678+00:00",
+   "last_seen": "2026-11-13T22:33:27.728329+00:00",
    "location": "Lavington, NSW",
    "price": null,
    "reminded": [],
@@ -129,7 +185,7 @@
   },
   "pickles:62438015": {
    "first_seen": "2026-11-13T05:54:59.762889+00:00",
-   "last_seen": "2026-11-13T20:41:27.023678+00:00",
+   "last_seen": "2026-11-13T22:33:27.728329+00:00",
    "location": "Lavington, NSW",
    "price": null,
    "reminded": [],
@@ -141,7 +197,7 @@
   },
   "pickles:62438028": {
    "first_seen": "2026-11-13T05:54:59.762889+00:00",
-   "last_seen": "2026-11-13T20:41:27.023678+00:00",
+   "last_seen": "2026-11-13T22:33:27.728329+00:00",
    "location": "Lavington, NSW",
    "price": null,
    "reminded": [],
@@ -153,7 +209,7 @@
   },
   "pickles:62438371": {
    "first_seen": "2026-11-13T05:54:59.762889+00:00",
-   "last_seen": "2026-11-13T20:41:27.023678+00:00",
+   "last_seen": "2026-11-13T22:33:27.728329+00:00",
    "location": "Acacia Ridge, QLD",
    "price": null,
    "reminded": [],
@@ -165,7 +221,7 @@
   },
   "pickles:62470384": {
    "first_seen": "2026-11-13T05:54:59.762889+00:00",
-   "last_seen": "2026-11-13T20:41:27.023678+00:00",
+   "last_seen": "2026-11-13T22:33:27.728329+00:00",
    "location": "Belmore, NSW",
    "price": null,
    "reminded": [],
@@ -177,7 +233,7 @@
   },
   "pickles:62470669": {
    "first_seen": "2026-11-13T05:54:59.762889+00:00",
-   "last_seen": "2026-11-13T20:41:27.023678+00:00",
+   "last_seen": "2026-11-13T22:33:27.728329+00:00",
    "location": "Warwick, QLD",
    "price": null,
    "reminded": [],
@@ -188,5 +244,7 @@
    "url": "https://www.pickles.com.au/used/details/cars/1997-toyota-landcruiser/62470669"
   }
  },
- "state_checks": {}
+ "state_checks": {
+  "grays:0022-23502935": "QLD"
+ }
 }
