@@ -24,7 +24,7 @@ sites:
 time_budget_minutes:
   lloyds: 3
   pickles: 5
-  grays: 5
+  grays: 7
   carbids: 4
 
 # Grays and Carbids search slowly, so they get a shorter list (titles there almost
