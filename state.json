@@ -91,48 +91,48 @@
   },
   "lloyds:6141267": {
    "first_seen": "2026-11-13T07:12:56.523183+00:00",
-   "last_seen": "2026-11-17T10:43:08.274747+00:00",
+   "last_seen": "2026-11-17T19:25:07.229695+00:00",
    "location": "NSW",
-   "price": "$760",
+   "price": "$960",
    "reminded": [],
    "site": "lloyds",
-   "time_at": "2026-11-28T02:40:38.329905+00:00",
+   "time_at": "2026-11-28T02:40:42.788962+00:00",
    "time_kind": "ends",
    "title": "1996 Mitsubishi Triton MJ Single Cab Utility -...",
    "url": "https://www.lloydsonline.com.au/LotDetails.aspx?lid=6141267"
   },
   "lloyds:6141270": {
    "first_seen": "2026-11-13T07:12:56.523183+00:00",
-   "last_seen": "2026-11-17T10:43:08.274747+00:00",
+   "last_seen": "2026-11-17T19:25:07.229695+00:00",
    "location": "VIC",
    "price": "$8,310",
    "reminded": [],
    "site": "lloyds",
-   "time_at": "2026-11-28T02:43:28.743882+00:00",
+   "time_at": "2026-11-28T02:43:29.671399+00:00",
    "time_kind": "ends",
    "title": "1981 Nissan Patrol Single Cab Utility - Yellow...",
    "url": "https://www.lloydsonline.com.au/LotDetails.aspx?lid=6141270"
   },
   "lloyds:6150985": {
    "first_seen": "2026-11-16T01:01:23.189637+00:00",
-   "last_seen": "2026-11-17T10:43:08.274747+00:00",
+   "last_seen": "2026-11-17T19:25:07.229695+00:00",
    "location": "NSW",
    "price": "$3",
    "reminded": [],
    "site": "lloyds",
-   "time_at": "2026-11-25T01:20:11.490068+00:00",
+   "time_at": "2026-11-25T01:20:11.814956+00:00",
    "time_kind": "ends",
    "title": "1997 Isuzu NPS300 Single Cab Chassis - White -...",
    "url": "https://www.lloydsonline.com.au/LotDetails.aspx?lid=6150985"
   },
   "lloyds:6153068": {
    "first_seen": "2026-11-17T10:43:08.274747+00:00",
-   "last_seen": "2026-11-17T10:43:08.274747+00:00",
+   "last_seen": "2026-11-17T19:25:07.229695+00:00",
    "location": "QLD",
    "price": "$1",
    "reminded": [],
    "site": "lloyds",
-   "time_at": "2026-11-28T02:57:18.937956+00:00",
+   "time_at": "2026-11-28T02:57:19.502329+00:00",
    "time_kind": "ends",
    "title": "1985 Toyota Landcruiser LX Wagon - Red -...",
    "url": "https://www.lloydsonline.com.au/LotDetails.aspx?lid=6153068"
@@ -273,7 +273,7 @@
   },
   "pickles:62438371": {
    "first_seen": "2026-11-13T05:54:59.762889+00:00",
-   "last_seen": "2026-11-17T10:43:08.274747+00:00",
+   "last_seen": "2026-11-17T19:25:07.229695+00:00",
    "location": "Acacia Ridge, QLD",
    "price": null,
    "reminded": [],
@@ -285,7 +285,7 @@
   },
   "pickles:62470384": {
    "first_seen": "2026-11-13T05:54:59.762889+00:00",
-   "last_seen": "2026-11-17T10:43:08.274747+00:00",
+   "last_seen": "2026-11-17T19:25:07.229695+00:00",
    "location": "Belmore, NSW",
    "price": null,
    "reminded": [],
@@ -297,7 +297,7 @@
   },
   "pickles:62470669": {
    "first_seen": "2026-11-13T05:54:59.762889+00:00",
-   "last_seen": "2026-11-17T10:43:08.274747+00:00",
+   "last_seen": "2026-11-17T19:25:07.229695+00:00",
    "location": "Warwick, QLD",
    "price": null,
    "reminded": [
@@ -305,13 +305,13 @@
    ],
    "site": "pickles",
    "time_at": "2026-11-18T10:30:00+11:00",
-   "time_kind": "starts",
+   "time_kind": null,
    "title": "1997 Toyota Landcruiser HZJ80R Standard Wagon 6st 5dr Man 5sp 4x4 4.2D",
    "url": "https://www.pickles.com.au/used/details/cars/1997-toyota-landcruiser/62470669"
   },
   "pickles:62472613": {
    "first_seen": "2026-11-17T02:06:52.477955+00:00",
-   "last_seen": "2026-11-17T10:43:08.274747+00:00",
+   "last_seen": "2026-11-17T19:25:07.229695+00:00",
    "location": "Bohle, QLD",
    "price": null,
    "reminded": [],
@@ -323,7 +323,7 @@
   },
   "pickles:62477638": {
    "first_seen": "2026-11-16T07:28:40.748247+00:00",
-   "last_seen": "2026-11-17T10:43:08.274747+00:00",
+   "last_seen": "2026-11-17T19:25:07.229695+00:00",
    "location": "Acacia Ridge, QLD",
    "price": null,
    "reminded": [],
@@ -335,7 +335,7 @@
   },
   "pickles:62478170": {
    "first_seen": "2026-11-17T10:43:08.274747+00:00",
-   "last_seen": "2026-11-17T10:43:08.274747+00:00",
+   "last_seen": "2026-11-17T19:25:07.229695+00:00",
    "location": "Tullamarine, VIC",
    "price": null,
    "reminded": [],
