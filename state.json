@@ -2,7 +2,15 @@
  "drive_checks": {
   "lloyds:6141267": true,
   "lloyds:6150985": true,
-  "pickles:62480851": true
+  "pickles:62462943": true,
+  "pickles:62469503": true,
+  "pickles:62470100": true,
+  "pickles:62476207": true,
+  "pickles:62479104": true,
+  "pickles:62480161": true,
+  "pickles:62480851": true,
+  "pickles:62484012": true,
+  "pickles:62485303": true
  },
  "health": {
   "carbids": {},
@@ -34,14 +42,14 @@
   },
   "grays:0003-23503068": {
    "first_seen": "2026-11-18T10:08:56.393692+00:00",
-   "last_seen": "2026-11-19T08:52:15.919454+00:00",
+   "last_seen": "2026-11-19T18:16:58.781833+00:00",
    "location": "Dandenong South, VIC",
-   "price": "$901",
+   "price": "$1,901",
    "reminded": [
     24
    ],
    "site": "grays",
-   "time_at": "2026-11-24T09:59:02.252823+00:00",
+   "time_at": "2026-11-24T09:59:42.662498+00:00",
    "time_kind": "ends",
    "title": "1993 Suzuki Maruti 4x4 Wide Track LWB Petrol",
    "url": "https://www.grays.com/lot/0003-23503068/classic-cars/1993-suzuki-maruti-4x4-wide-track-lwb-petrol"
@@ -78,14 +86,14 @@
   },
   "grays:0018-23503038": {
    "first_seen": "2026-11-18T10:08:56.393692+00:00",
-   "last_seen": "2026-11-19T08:52:15.919454+00:00",
+   "last_seen": "2026-11-19T18:16:58.781833+00:00",
    "location": "Dandenong South, VIC",
-   "price": "$109",
+   "price": "$209",
    "reminded": [
     24
    ],
    "site": "grays",
-   "time_at": "2026-11-24T08:59:02.252823+00:00",
+   "time_at": "2026-11-24T08:59:42.662498+00:00",
    "time_kind": "ends",
    "title": "1989 Suzuki Vitara JLX Electric",
    "url": "https://www.grays.com/lot/0018-23503038/motor-vehicles-motor-cycles/1989-suzuki-vitara-jlx-electric"
@@ -120,84 +128,84 @@
   },
   "lloyds:6141267": {
    "first_seen": "2026-11-13T07:12:56.523183+00:00",
-   "last_seen": "2026-11-19T08:52:15.919454+00:00",
+   "last_seen": "2026-11-19T18:16:58.781833+00:00",
    "location": "NSW",
    "price": "$960",
    "reminded": [],
    "site": "lloyds",
-   "time_at": "2026-11-28T02:44:54.082414+00:00",
+   "time_at": "2026-11-28T02:45:36.108385+00:00",
    "time_kind": "ends",
    "title": "1996 Mitsubishi Triton MJ Single Cab Utility -...",
    "url": "https://www.lloydsonline.com.au/LotDetails.aspx?lid=6141267"
   },
   "lloyds:6141270": {
    "first_seen": "2026-11-13T07:12:56.523183+00:00",
-   "last_seen": "2026-11-19T08:52:15.919454+00:00",
+   "last_seen": "2026-11-19T18:16:58.781833+00:00",
    "location": "VIC",
    "price": "$8,910",
    "reminded": [],
    "site": "lloyds",
-   "time_at": "2026-11-28T02:47:37.483650+00:00",
+   "time_at": "2026-11-28T02:47:19.919350+00:00",
    "time_kind": "ends",
    "title": "1981 Nissan Patrol Single Cab Utility - Yellow...",
    "url": "https://www.lloydsonline.com.au/LotDetails.aspx?lid=6141270"
   },
   "lloyds:6150985": {
    "first_seen": "2026-11-16T01:01:23.189637+00:00",
-   "last_seen": "2026-11-19T08:52:15.919454+00:00",
+   "last_seen": "2026-11-19T18:16:58.781833+00:00",
    "location": "NSW",
    "price": "$1,050",
    "reminded": [],
    "site": "lloyds",
-   "time_at": "2026-11-25T01:23:20.224465+00:00",
+   "time_at": "2026-11-25T01:23:02.664427+00:00",
    "time_kind": "ends",
    "title": "1997 Isuzu NPS300 Single Cab Chassis - White -...",
    "url": "https://www.lloydsonline.com.au/LotDetails.aspx?lid=6150985"
   },
   "lloyds:6153068": {
    "first_seen": "2026-11-17T10:43:08.274747+00:00",
-   "last_seen": "2026-11-19T08:52:15.919454+00:00",
+   "last_seen": "2026-11-19T18:16:58.781833+00:00",
    "location": "QLD",
-   "price": "$3",
+   "price": "$4",
    "reminded": [],
    "site": "lloyds",
-   "time_at": "2026-11-28T02:53:27.407891+00:00",
+   "time_at": "2026-11-28T02:53:09.603674+00:00",
    "time_kind": "ends",
    "title": "1985 Toyota Landcruiser LX Wagon - Red -...",
    "url": "https://www.lloydsonline.com.au/LotDetails.aspx?lid=6153068"
   },
   "lloyds:6156465": {
    "first_seen": "2026-11-19T08:52:15.919454+00:00",
-   "last_seen": "2026-11-19T08:52:15.919454+00:00",
+   "last_seen": "2026-11-19T18:16:58.781833+00:00",
    "location": "VIC",
-   "price": "$1",
+   "price": "$65",
    "reminded": [],
    "site": "lloyds",
-   "time_at": "2026-11-30T09:30:40.755219+00:00",
+   "time_at": "2026-11-30T09:30:23.235019+00:00",
    "time_kind": "ends",
    "title": "1984 Mitsubishi Pajero L042GV - White -...",
    "url": "https://www.lloydsonline.com.au/LotDetails.aspx?lid=6156465"
   },
   "lloyds:6156943": {
    "first_seen": "2026-11-19T08:52:15.919454+00:00",
-   "last_seen": "2026-11-19T08:52:15.919454+00:00",
+   "last_seen": "2026-11-19T18:16:58.781833+00:00",
    "location": "NSW",
    "price": "$1",
    "reminded": [],
    "site": "lloyds",
-   "time_at": "2026-11-30T09:29:27.407891+00:00",
+   "time_at": "2026-11-30T09:29:09.603674+00:00",
    "time_kind": "ends",
    "title": "1990 Toyota Landcruiser HDJ80R Wagon - Dark...",
    "url": "https://www.lloydsonline.com.au/LotDetails.aspx?lid=6156943"
   },
   "lloyds:6156944": {
    "first_seen": "2026-11-19T08:52:15.919454+00:00",
-   "last_seen": "2026-11-19T08:52:15.919454+00:00",
+   "last_seen": "2026-11-19T18:16:58.781833+00:00",
    "location": "QLD",
    "price": "$1",
    "reminded": [],
    "site": "lloyds",
-   "time_at": "2026-11-30T09:31:01.010099+00:00",
+   "time_at": "2026-11-30T09:30:44.088006+00:00",
    "time_kind": "ends",
    "title": "1983 Land Rover Range Rover Classic Wagon -...",
    "url": "https://www.lloydsonline.com.au/LotDetails.aspx?lid=6156944"
@@ -351,9 +359,45 @@
    "title": "1991 Toyota Landcruiser HDJ80R GXL Wagon 8st 5dr Man 5sp 4x4 4.2DT",
    "url": "https://www.pickles.com.au/used/details/cars/1991-toyota-landcruiser/62438371"
   },
+  "pickles:62462943": {
+   "first_seen": "2026-11-19T18:16:58.781833+00:00",
+   "last_seen": "2026-11-19T18:16:58.781833+00:00",
+   "location": "Tullamarine, VIC",
+   "price": null,
+   "reminded": [],
+   "site": "pickles",
+   "time_at": "2026-11-22T14:00:00+11:00",
+   "time_kind": "starts",
+   "title": "1996 Toyota Corolla AE102X Conquest Sedan 4dr Auto 4sp 1.8i",
+   "url": "https://www.pickles.com.au/used/details/cars/1996-toyota-corolla/62462943"
+  },
+  "pickles:62469503": {
+   "first_seen": "2026-11-19T18:16:58.781833+00:00",
+   "last_seen": "2026-11-19T18:16:58.781833+00:00",
+   "location": "Milperra, NSW",
+   "price": null,
+   "reminded": [],
+   "site": "pickles",
+   "time_at": "2026-11-25T12:00:00+11:00",
+   "time_kind": "starts",
+   "title": "1997 Mitsubishi Mirage CE Hatchback 3dr Auto 4sp 1.5i",
+   "url": "https://www.pickles.com.au/used/details/cars/1997-mitsubishi-mirage/62469503"
+  },
+  "pickles:62470100": {
+   "first_seen": "2026-11-19T18:16:58.781833+00:00",
+   "last_seen": "2026-11-19T18:16:58.781833+00:00",
+   "location": "Tullamarine, VIC",
+   "price": null,
+   "reminded": [],
+   "site": "pickles",
+   "time_at": "2026-11-22T14:00:00+11:00",
+   "time_kind": "starts",
+   "title": "1988 Honda Prelude Sedan",
+   "url": "https://www.pickles.com.au/used/details/cars/1988-honda-prelude/62470100"
+  },
   "pickles:62470384": {
    "first_seen": "2026-11-13T05:54:59.762889+00:00",
-   "last_seen": "2026-11-19T08:52:15.919454+00:00",
+   "last_seen": "2026-11-19T18:16:58.781833+00:00",
    "location": "Belmore, NSW",
    "price": null,
    "reminded": [],
@@ -379,7 +423,7 @@
   },
   "pickles:62472613": {
    "first_seen": "2026-11-17T02:06:52.477955+00:00",
-   "last_seen": "2026-11-19T08:52:15.919454+00:00",
+   "last_seen": "2026-11-19T18:16:58.781833+00:00",
    "location": "Bohle, QLD",
    "price": null,
    "reminded": [],
@@ -388,6 +432,18 @@
    "time_kind": "starts",
    "title": "1992 Toyota Landcruiser HDJ80R GXL Wagon 8st 5dr Auto 4sp 4x4 4.2DT",
    "url": "https://www.pickles.com.au/used/details/cars/1992-toyota-landcruiser/62472613"
+  },
+  "pickles:62476207": {
+   "first_seen": "2026-11-19T18:16:58.781833+00:00",
+   "last_seen": "2026-11-19T18:16:58.781833+00:00",
+   "location": "Tullamarine, VIC",
+   "price": null,
+   "reminded": [],
+   "site": "pickles",
+   "time_at": "2026-11-22T14:00:00+11:00",
+   "time_kind": "starts",
+   "title": "1997 Toyota Starlet Group X Hatchback 3dr Man 5sp 1.3i",
+   "url": "https://www.pickles.com.au/used/details/cars/1997-toyota-starlet/62476207"
   },
   "pickles:62477638": {
    "first_seen": "2026-11-16T07:28:40.748247+00:00",
@@ -405,7 +461,7 @@
   },
   "pickles:62478170": {
    "first_seen": "2026-11-17T10:43:08.274747+00:00",
-   "last_seen": "2026-11-19T08:52:15.919454+00:00",
+   "last_seen": "2026-11-19T18:16:58.781833+00:00",
    "location": "Tullamarine, VIC",
    "price": null,
    "reminded": [],
@@ -415,9 +471,33 @@
    "title": "1992 Nissan Patrol GQ II DX Wagon 5dr Man 5sp 4x4 4.2D",
    "url": "https://www.pickles.com.au/used/details/cars/1992-nissan-patrol/62478170"
   },
+  "pickles:62479104": {
+   "first_seen": "2026-11-19T18:16:58.781833+00:00",
+   "last_seen": "2026-11-19T18:16:58.781833+00:00",
+   "location": "Tullamarine, VIC",
+   "price": null,
+   "reminded": [],
+   "site": "pickles",
+   "time_at": "2026-11-22T14:00:00+11:00",
+   "time_kind": "starts",
+   "title": "1995 Honda Civic EH VTi Sedan 4dr. Auto 4sp 1.6i",
+   "url": "https://www.pickles.com.au/used/details/cars/1995-honda-civic/62479104"
+  },
+  "pickles:62480161": {
+   "first_seen": "2026-11-19T18:16:58.781833+00:00",
+   "last_seen": "2026-11-19T18:16:58.781833+00:00",
+   "location": "Tullamarine, VIC",
+   "price": null,
+   "reminded": [],
+   "site": "pickles",
+   "time_at": "2026-11-24T09:30:00+11:00",
+   "time_kind": "starts",
+   "title": "1995 Volkswagen Golf GL Hatchback 5dr Man 5sp 2.0i",
+   "url": "https://www.pickles.com.au/used/details/cars/1995-volkswagen-golf/62480161"
+  },
   "pickles:62480851": {
    "first_seen": "2026-11-19T01:13:19.752231+00:00",
-   "last_seen": "2026-11-19T08:52:15.919454+00:00",
+   "last_seen": "2026-11-19T18:16:58.781833+00:00",
    "location": "Dubbo, NSW",
    "price": null,
    "reminded": [],
@@ -429,7 +509,7 @@
   },
   "pickles:62484005": {
    "first_seen": "2026-11-19T08:52:15.919454+00:00",
-   "last_seen": "2026-11-19T08:52:15.919454+00:00",
+   "last_seen": "2026-11-19T18:16:58.781833+00:00",
    "location": "Dalby, QLD",
    "price": null,
    "reminded": [],
@@ -438,6 +518,30 @@
    "time_kind": "starts",
    "title": "1992 Mazda Bravo B2600 Cab Chassis Single Cab",
    "url": "https://www.pickles.com.au/used/details/cars/1992-mazda-bravo/62484005"
+  },
+  "pickles:62484012": {
+   "first_seen": "2026-11-19T18:16:58.781833+00:00",
+   "last_seen": "2026-11-19T18:16:58.781833+00:00",
+   "location": "Dalby, QLD",
+   "price": null,
+   "reminded": [],
+   "site": "pickles",
+   "time_at": "2026-12-04T10:00:00+11:00",
+   "time_kind": "starts",
+   "title": "1997 Lexus ES Sedan",
+   "url": "https://www.pickles.com.au/used/details/cars/1997-lexus-es/62484012"
+  },
+  "pickles:62485303": {
+   "first_seen": "2026-11-19T18:16:58.781833+00:00",
+   "last_seen": "2026-11-19T18:16:58.781833+00:00",
+   "location": "Miles, QLD",
+   "price": null,
+   "reminded": [],
+   "site": "pickles",
+   "time_at": "2026-12-04T10:00:00+11:00",
+   "time_kind": "starts",
+   "title": "1995 Mazda 323 Sedan",
+   "url": "https://www.pickles.com.au/used/details/cars/1995-mazda-323/62485303"
   }
  },
  "state_checks": {
